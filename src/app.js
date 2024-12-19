@@ -29,3 +29,110 @@ console.log(fastestCar("buggatti"));
 //   return "Happy birthday to you , happy birthday happy birthday happy birthday to you, how old are you now";
 // }
 // console.log(happyBirthday);
+
+function linearSearch(arr, val) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === val) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+linearSearch([1, 4, 7, 12, 28, 36, 28, 19, 35, 36, 22, 30], 36);
+
+function binarySearch(arr, target) {
+  var left = 0;
+  var right = arr.length - 1;
+
+  while (left <= right) {
+    // find the middle position
+
+    let middle = Math.floor((left + right) / 2);
+
+    // if we found the target , return its position
+    if (arr[middle] === target) {
+      return middle;
+    }
+
+    // if target is greater , ignore left half
+    if (arr[middle] < target) {
+      left = middle + 1;
+    }
+    // if target is smaller ignore right half
+    else {
+      right = middle - 1;
+    }
+  }
+  // if we get here target wasn't found
+  return -1;
+}
+
+// let use a simple example : finding a number in a sorted list
+
+const numbers = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+const target = 70;
+
+const result = binarySearch(numbers, target);
+
+console.log(`found ${target} at position: ${result}`);
+
+const phoneBook = [
+  "Adams",
+  "Brown",
+  "Clark",
+  "Davis",
+  "Evans",
+  "Frank",
+  "Garcia",
+  "Harris",
+  "Intel",
+  "Jones",
+];
+
+// linear way for finding names
+function findName(arr, value) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      return "found at " + i;
+    }
+  }
+  return -1;
+}
+
+findName(phoneBook, "Jones");
+
+// Binary way of finding names
+function nameSearch(arr, value) {
+  var left = 0;
+  var right = arr.length - 1;
+
+  while (left <= right) {
+    // find the middle position
+
+    let middle = Math.floor((left + right) / 2);
+
+    // if we found the target , return its position
+    if (arr[middle] === value) {
+      return middle;
+    }
+
+    // if target is greater , ignore left half
+    if (arr[middle] < value) {
+      left = middle + 1;
+    }
+    // if target is smaller ignore right half
+    else {
+      right = middle - 1;
+    }
+  }
+  // if we get here target wasn't found
+  return -1;
+}
+
+const names = phoneBook;
+const lookingFor = "Evans";
+
+const finish = nameSearch(names, lookingFor);
+
+console.log(`found ${lookingFor} at position: ${finish}`);
